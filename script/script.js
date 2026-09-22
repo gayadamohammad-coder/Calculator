@@ -30,3 +30,12 @@ function operate(a,b,operator){
         return divide(a,b);
     }
 }
+
+const buttons = document.querySelectorAll("button");
+const display = document.querySelector(".display");
+
+buttons.forEach(button =>{
+    button.addEventListener("click",()=>{
+        display.textContent= display.textContent + button.textContent;
+    });
+});
