@@ -69,7 +69,20 @@ buttons.forEach(button =>{
             }
             }else if(button.textContent==="Clear"){
             display.textContent="";
+        }else if (
+        button.textContent === "+" ||
+        button.textContent === "-" ||
+        button.textContent === "*" ||
+        button.textContent === "/"
+    ){
+        if(operator === ""){
+            operator= button.textContent;
+            numberOne = result;
         }else{
+
+        }
+
+    }else{
          display.textContent= display.textContent + button.textContent;
         }
         
