@@ -36,6 +36,44 @@ const display = document.querySelector(".display");
 
 buttons.forEach(button =>{
     button.addEventListener("click",()=>{
-        display.textContent= display.textContent + button.textContent;
-    });
+        if(button.textContent==="="){
+            if(display.textContent.includes("+")){
+                const numbersArray = display.textContent.split("+");
+                operator = "+";
+                numberOne = Number(numbersArray[0]);
+                numberTwo = Number(numbersArray[1]);
+                const result = operate(numberOne,numberTwo,operator);
+                display.textContent = result;
+            }else if(display.textContent.includes("-")){
+                const numbersArray = display.textContent.split("-");
+                operator = "-";
+                numberOne=Number(numbersArray[0]);
+                numberTwo=Number(numbersArray[1]);
+                const result = operate(numberOne,numberTwo,operator);
+                display.textContent = result;
+            }else if (display.textContent.includes("*")){
+                const numbersArray = display.textContent.split("*");
+                operator= "*";
+                numberOne = Number(numbersArray[0]);
+                numberTwo = Number(numbersArray[1]);
+                const result = operate(numberOne,numberTwo,operator);
+                display.textContent= result;
+            }else if(display.textContent.includes("/")){
+                const numbersArray=display.textContent.split("/");
+                operator = "/";
+                numberOne = Number(numbersArray[0]); 
+                numberTwo = Number(numbersArray[1]);
+                const result = operate(numberOne,numberTwo,operator);
+                display.textContent=result;
+
+            }
+            }else if(button.textContent==="Clear"){
+            display.textContent="";
+        }else{
+         display.textContent= display.textContent + button.textContent;
+        }
+        
+    
+        
+    });   
 });
