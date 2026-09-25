@@ -17,7 +17,7 @@ function divide(a,b){
 
 let numberOne;
 let numberTwo;
-let operator;
+let operator="";
 
 function operate(a,b,operator){
     if(operator==="+"){
@@ -69,17 +69,26 @@ buttons.forEach(button =>{
             }
             }else if(button.textContent==="Clear"){
             display.textContent="";
-        }else if (
-        button.textContent === "+" ||
-        button.textContent === "-" ||
-        button.textContent === "*" ||
-        button.textContent === "/"
-    ){
-        if(operator === ""){
+            operator="";
+            }else if (
+            button.textContent === "+" ||
+            button.textContent === "-" ||
+            button.textContent === "*" ||
+            button.textContent === "/"
+            ){
+            if(operator === ""){
             operator= button.textContent;
+            numberOne = Number(display.textContent);
+            display.textContent = display.textContent + operator;
+            }else{
+            const oldOperator = operator;
+            const numbersArray = display.textContent.split(oldOperator);
+            numberTwo = Number(numbersArray[1]);
+            const result = operate(numberOne,numberTwo,oldOperator);
             numberOne = result;
-        }else{
-
+            operator = button.textContent;
+            display.textContent = result + operator;
+            
         }
 
     }else{
