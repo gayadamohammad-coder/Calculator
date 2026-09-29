@@ -121,28 +121,49 @@ buttons.forEach(button =>{
                     justCalculated=false;
 
 
-            }else if(operator === ""){
-                operator= button.textContent;
-                numberOne = Number(display.textContent);
-                display.textContent = display.textContent + operator;
-                }else{
-                const oldOperator = operator;
-                const numbersArray = display.textContent.split(oldOperator);
-                if (numbersArray[1]===""){
+                }else if(operator === ""){
+                    operator= button.textContent;
+                    numberOne = Number(display.textContent);
+                    display.textContent = display.textContent + operator;
+                    }else{
+                    const oldOperator = operator;
+                    const numbersArray = display.textContent.split(oldOperator);
+                    if (numbersArray[1]===""){
                     return;
-                }
-                numberTwo = Number(numbersArray[1]);
-                const result = operate(numberOne,numberTwo,oldOperator);
-                const roundResult = Math.round(result * 10000) / 10000;
-                numberOne = roundResult;
-                operator = button.textContent;
-                display.textContent = roundResult + operator;
-            
+                    }
+                    numberTwo = Number(numbersArray[1]);
+                    const result = operate(numberOne,numberTwo,oldOperator);
+                    const roundResult = Math.round(result * 10000) / 10000;
+                    numberOne = roundResult;
+                    operator = button.textContent;
+                    display.textContent = roundResult + operator;
                 }
 
-    }else{
-          if (display.textContent === "ERROR!") {        
-        display.textContent = button.textContent;     
+            }else if(button.textContent==="."){
+                if (operator === "") {
+
+                    if (display.textContent.includes(".")) {
+                        return;
+                    }
+
+                    display.textContent = display.textContent + button.textContent;
+
+                } else {
+
+                    const numbersArray = display.textContent.split(operator);
+
+                    if (numbersArray[1].includes(".")) {
+                        return;
+                    }
+
+                     display.textContent = display.textContent + button.textContent;
+                }
+            }else if(button.textContent==="←"){
+
+                display.textContent = display.textContent.slice(0,-1);
+        }else{
+            if (display.textContent === "ERROR!") {        
+            display.textContent = button.textContent;     
         } else {
             if (justCalculated === true) {    
                 display.textContent = button.textContent;
