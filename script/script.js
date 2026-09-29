@@ -179,3 +179,11 @@ buttons.forEach(button =>{
         
     });   
 });
+
+document.addEventListener("keydown", (event) => {
+    buttons.forEach(button=>{
+        if(button.textContent===event.key){
+            button.click();
+        }
+    });
+});
