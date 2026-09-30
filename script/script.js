@@ -158,7 +158,7 @@ buttons.forEach(button =>{
 
                      display.textContent = display.textContent + button.textContent;
                 }
-            }else if(button.textContent==="←"){
+            }else if(button.textContent==="Backspace"){
 
                 display.textContent = display.textContent.slice(0,-1);
         }else{
